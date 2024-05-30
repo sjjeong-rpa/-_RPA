@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="_03_ACME_DT추출" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="856,3280" sap2010:WorkflowViewState.IdRef="_03_ACME_DT추출_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="_03_ACME_DT추출" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1202,3936" sap2010:WorkflowViewState.IdRef="_03_ACME_DT추출_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -41,6 +41,7 @@
       <x:String>UiPath.UIAutomationNext.Contracts</x:String>
       <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -102,9 +103,12 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="&lt;ACME : Work Items 페이지 DT 추출하기&gt;&#xA;Work Items DT를 추출하여 필터링 후, 컬럼을 추가한다.&#xA;&#xA;- 파일명 : ACME.xlsx&#xA;- 시트명(원본데이터) : WI_원본&#xA;- 시트명(가공데이터) : WI_가공&#xA;&#xA;&#xA;&lt;필터링 조건&gt;&#xA;1. 행 필터링 : 아래의 두 조건을 만족하는 두 행을 남길 것&#xA; - Type == WI5&#xA; - Status == Open&#xA;&#xA;2. 열 필터링 : Date 컬럼 삭제&#xA;&#xA;3. 컬럼 추가 : Client ID, Client Name, Client Country, Hash" DisplayName="_03_ACME_DT추출" sap:VirtualizedContainerService.HintSize="608,3215" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="&lt;ACME : Work Items 페이지 DT 추출하기&gt;&#xA;Work Items DT를 추출하여 필터링 후, 컬럼을 추가한다.&#xA;&#xA;- 파일명 : ACME.xlsx&#xA;- 시트명(원본데이터) : WI_원본&#xA;- 시트명(가공데이터) : WI_가공&#xA;&#xA;&#xA;&lt;필터링 조건&gt;&#xA;1. 행 필터링 : 아래의 두 조건을 만족하는 두 행을 남길 것&#xA; - Type == WI5&#xA; - Status == Open&#xA;&#xA;2. 열 필터링 : Date 컬럼 삭제&#xA;&#xA;3. 컬럼 추가 : Client ID, Client Name, Client Country, Hash" DisplayName="_03_ACME_DT추출" sap:VirtualizedContainerService.HintSize="608,3871" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dt원본" />
@@ -124,14 +128,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Sequence DisplayName="DT 추출 | Sequence" sap:VirtualizedContainerService.HintSize="546,57" sap2010:WorkflowViewState.IdRef="Sequence_16">
+    <Sequence DisplayName="DT 추출 | Sequence" sap:VirtualizedContainerService.HintSize="546,751" sap2010:WorkflowViewState.IdRef="Sequence_16">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="ACME | Use Application/Browser" sap:VirtualizedContainerService.HintSize="450,549" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="e0284661-1cc1-4e4a-8660-c9f6bbb16753" Version="V2">
+      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="ACME | Use Application/Browser" sap:VirtualizedContainerService.HintSize="450,518" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="e0284661-1cc1-4e4a-8660-c9f6bbb16753" Version="V2">
         <uix:NApplicationCard.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -164,6 +168,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </uix:NApplicationCard>
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;&gt; DT 추출 완료 : &quot; + dt원본.RowCount.ToString]" />
     </Sequence>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="546,57" sap2010:WorkflowViewState.IdRef="CommentOut_4">
       <ui:CommentOut.Body>
@@ -225,7 +230,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <Sequence sap2010:Annotation.AnnotationText="&lt;ACME DT추출 - 필터링 조건&gt;&#xA;1. 행 필터링 : 아래의 두 조건을 만족하는 두 행을 남길 것&#xA; - Type == WI5&#xA; - Status == Open&#xA;&#xA;2. Filter Data Table 액티비티를 사용하지 않고, DT를 가공할 것.&#xA; - 수업시간에서 배운 문자열 가공을 사용&#xA; - 반복문을 활용할 것&#xA;&#xA;3. 열 필터링 : Date 컬럼 삭제" DisplayName="DT 가공 - 반복문 | Sequence" sap:VirtualizedContainerService.HintSize="546,1422" sap2010:WorkflowViewState.IdRef="Sequence_26">
+    <Sequence sap2010:Annotation.AnnotationText="&lt;ACME DT추출 - 필터링 조건&gt;&#xA;1. 행 필터링 : 아래의 두 조건을 만족하는 두 행을 남길 것&#xA; - Type == WI5&#xA; - Status == Open&#xA;&#xA;2. Filter Data Table 액티비티를 사용하지 않고, DT를 가공할 것.&#xA; - 수업시간에서 배운 문자열 가공을 사용&#xA; - 반복문을 활용할 것&#xA;&#xA;3. 열 필터링 : Date 컬럼 삭제" DisplayName="DT 가공 - 반복문 | Sequence" sap:VirtualizedContainerService.HintSize="546,1399" sap2010:WorkflowViewState.IdRef="Sequence_26">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -233,7 +238,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="dt가공 초기화 | Assign" sap:VirtualizedContainerService.HintSize="484,115" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign DisplayName="dt가공 초기화 | Assign" sap:VirtualizedContainerService.HintSize="484,114" sap2010:WorkflowViewState.IdRef="Assign_3">
         <Assign.To>
           <OutArgument x:TypeArguments="sd:DataTable">[dt가공]</OutArgument>
         </Assign.To>
@@ -303,23 +308,23 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt원본]" DisplayName="dt원본 | For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="484,715" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt원본]" DisplayName="dt원본 | For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="484,706" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
             </ActivityAction.Argument>
-            <If sap2010:Annotation.AnnotationText="Type == WI5&#xA;Status == Open" Condition="[CurrentRow(&quot;Type&quot;).ToString.Trim.Equals(&quot;WI5&quot;) And CurrentRow(&quot;Status&quot;).ToString.Trim.Equals(&quot;Open&quot;)]" DisplayName="dt가공에 쌓기 | If" sap:VirtualizedContainerService.HintSize="450,495" sap2010:WorkflowViewState.IdRef="If_2">
+            <If sap2010:Annotation.AnnotationText="Type == WI5&#xA;Status == Open" Condition="[CurrentRow(&quot;Type&quot;).ToString.Trim.Equals(&quot;WI5&quot;) And CurrentRow(&quot;Status&quot;).ToString.Trim.Equals(&quot;Open&quot;)]" DisplayName="dt가공에 쌓기 | If" sap:VirtualizedContainerService.HintSize="450,488" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[CurrentRow.ItemArray]" DataTable="[dt가공]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,189" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[CurrentRow.ItemArray]" DataTable="[dt가공]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,186" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,101" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,100" sap2010:WorkflowViewState.IdRef="Sequence_19">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -331,7 +336,7 @@
           </ActivityAction>
         </ui:ForEachRow.Body>
       </ui:ForEachRow>
-      <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" sap2010:Annotation.AnnotationText="열 필터링 : Date 컬럼 삭제" ColumnName="Date" DataTable="[dt가공]" DisplayName="Date 컬럼 삭제 | Remove Data Column" sap:VirtualizedContainerService.HintSize="484,243" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_2">
+      <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" sap2010:Annotation.AnnotationText="열 필터링 : Date 컬럼 삭제" ColumnName="Date" DataTable="[dt가공]" DisplayName="Date 컬럼 삭제 | Remove Data Column" sap:VirtualizedContainerService.HintSize="484,240" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
