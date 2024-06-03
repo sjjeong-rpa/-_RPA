@@ -1,4 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="_04_ACME_세부정보추출" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1202,2045" sap2010:WorkflowViewState.IdRef="_04_ACME_세부정보추출_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="_04_ACME_세부정보추출" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_dt가공" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1154,1401</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_04_ACME_세부정보추출_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -115,10 +123,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="&lt;04. ACME Client 세부정보 추출&gt;&#xA;ACME Work Items 페이지에서 돋보기를 누르면 나오는 페이지에서 3개의 정보를 추출하여, DT에 채워 넣는다.&#xA;&#xA; - Client ID&#xA; - Client Name&#xA; - Client Address" DisplayName="_04_ACME_세부정보추출" sap:VirtualizedContainerService.HintSize="704,1980" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="dtWorkItems" />
-    </Sequence.Variables>
+  <Sequence sap2010:Annotation.AnnotationText="&lt;04. ACME Client 세부정보 추출&gt;&#xA;ACME Work Items 페이지에서 돋보기를 누르면 나오는 페이지에서 3개의 정보를 추출하여, DT에 채워 넣는다.&#xA;&#xA; - Client ID&#xA; - Client Name&#xA; - Client Address" DisplayName="_04_ACME_세부정보추출" sap:VirtualizedContainerService.HintSize="704,1336" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -126,7 +131,24 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="642,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;ACME Client 정보 추출 시작. .&quot;]" />
-    <ui:ReadRange AddHeaders="True" DataTable="[dtWorkItems]" DisplayName="dtWorkItems | Read Range Workbook" sap:VirtualizedContainerService.HintSize="642,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" Range="A1" SheetName="WI_가공" WorkbookPath="ACME.xlsx" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="642,57" sap2010:WorkflowViewState.IdRef="CommentOut_12">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="416,196" sap2010:WorkflowViewState.IdRef="Sequence_35">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadRange AddHeaders="True" DataTable="[dtWorkItems]" DisplayName="dtWorkItems | Read Range Workbook" sap:VirtualizedContainerService.HintSize="354,111" sap2010:WorkflowViewState.IdRef="ReadRange_2" Range="A1" SheetName="WI_가공" WorkbookPath="ACME.xlsx" />
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="642,57" sap2010:WorkflowViewState.IdRef="CommentOut_8">
       <ui:CommentOut.Body>
         <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="416,133" sap2010:WorkflowViewState.IdRef="Sequence_28">
@@ -492,26 +514,26 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Client 텍스트 추출 | Use Browser Chrome: ACME System 1 - Work Items" sap:VirtualizedContainerService.HintSize="642,1128" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="860a3f54-8009-40be-bba4-6c0695501315" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Client 텍스트 추출 | Use Browser Chrome: ACME System 1 - Work Items" sap:VirtualizedContainerService.HintSize="642,547" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="860a3f54-8009-40be-bba4-6c0695501315" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="608,879" sap2010:WorkflowViewState.IdRef="Sequence_33">
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="512,298" sap2010:WorkflowViewState.IdRef="Sequence_33">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtWorkItems]" DisplayName=" dtWorkItems | For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="546,794" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_dt가공]" DisplayName=" io_dt가공 | For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="450,211" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="512,607" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                  <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="416,22" sap2010:WorkflowViewState.IdRef="Sequence_27">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="strAccountInfo" />
                       <Variable x:TypeArguments="x:String" Name="strClientID" />
@@ -521,11 +543,11 @@
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="541,57" sap2010:WorkflowViewState.IdRef="CommentOut_10">
                       <ui:CommentOut.Body>
                         <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="416,190" sap2010:WorkflowViewState.IdRef="Sequence_31">
                           <sap:WorkflowViewStateService.ViewState>
@@ -543,16 +565,16 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
-                    <uix:NGoToUrl sap2010:Annotation.AnnotationText="https://acme-test.uipath.com/work-items/100629984" DisplayName="세부정보 페이지 이동 | Go To URL" sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="NGoToUrl_6" Url="[&quot;https://acme-test.uipath.com/work-items/&quot;+CurrentRow(&quot;WIID&quot;).ToString]" Version="V3">
+                    <uix:NGoToUrl sap2010:Annotation.AnnotationText="https://acme-test.uipath.com/work-items/100629984" DisplayName="세부정보 페이지 이동 | Go To URL" sap:VirtualizedContainerService.HintSize="541,145" sap2010:WorkflowViewState.IdRef="NGoToUrl_6" Url="[&quot;https://acme-test.uipath.com/work-items/&quot;+CurrentRow(&quot;WIID&quot;).ToString]" Version="V3">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NGoToUrl>
-                    <uix:NGetText sap2010:Annotation.AnnotationText="Client ID: BL17488&#xA;Client Name: Mabel Suttle&#xA;Client Country: Romania" DisplayName="세부정보 추출 | Get Text" sap:VirtualizedContainerService.HintSize="450,246" sap2010:WorkflowViewState.IdRef="NGetText_9" ScopeIdentifier="860a3f54-8009-40be-bba4-6c0695501315" TextString="[strAccountInfo]" Version="V3">
+                    <uix:NGetText sap2010:Annotation.AnnotationText="Client ID: BL17488&#xA;Client Name: Mabel Suttle&#xA;Client Country: Romania" DisplayName="세부정보 추출 | Get Text" sap:VirtualizedContainerService.HintSize="541,246" sap2010:WorkflowViewState.IdRef="NGetText_9" ScopeIdentifier="860a3f54-8009-40be-bba4-6c0695501315" TextString="[strAccountInfo]" Version="V3">
                       <uix:NGetText.Target>
                         <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/work-items/100629984" DesignTimeRectangle="499, 479, 373, 60" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='P' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='P' type='' class='' aaname='                              BL17488                              Mabel Suttle                              Romania                         ' /&gt;" Guid="4303aa4f-d6fa-4728-ada8-ff6716b948b6" InformativeScreenshot="59d5e489928575de5c35917d115144e6.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Work Items' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive" />
                       </uix:NGetText.Target>
@@ -564,7 +586,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NGetText>
-                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="541,57" sap2010:WorkflowViewState.IdRef="CommentOut_11">
                       <ui:CommentOut.Body>
                         <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="416,643" sap2010:WorkflowViewState.IdRef="Sequence_32">
                           <sap:WorkflowViewStateService.ViewState>
@@ -614,10 +636,10 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
-                    <Sequence DisplayName="텍스트 가공 | Sequence" sap:VirtualizedContainerService.HintSize="450,48" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                    <Sequence DisplayName="텍스트 가공 | Sequence" sap:VirtualizedContainerService.HintSize="541,1010" sap2010:WorkflowViewState.IdRef="Sequence_34">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -790,7 +812,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
-    <ui:WriteRange AddHeaders="True" DataTable="[dtWorkItems]" DisplayName="테스트용 | Write Range Workbook" sap:VirtualizedContainerService.HintSize="642,148" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Client" StartingCell="A1" WorkbookPath="ACME.xlsx" />
+    <ui:WriteRange AddHeaders="True" DataTable="[io_dt가공]" DisplayName="테스트용 | Write Range Workbook" sap:VirtualizedContainerService.HintSize="642,148" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Client" StartingCell="A1" WorkbookPath="ACME.xlsx" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="642,164" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;ACME Client 정보 추출 완료. .&quot;]" />
   </Sequence>
 </Activity>
